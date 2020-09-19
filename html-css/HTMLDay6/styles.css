@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0,.4);
+}
+
+.background > .body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pink-button {
+    background-color: #ed2457;
+    color: white;
+    padding: 10px 5px;
+    border-radius: 25px;
+    border: 5px solid #ed2457;
+    width: 200px;
+}

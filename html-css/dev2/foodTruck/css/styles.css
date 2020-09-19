@@ -1,0 +1,20 @@
+.center {
+    margin: auto;
+    width:  50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.centerHeading {
+    text-align: center;
+}
+.centerText {
+    text-align: left;
+    list-style-type: none;
+    width: 100px;
+    padding-left: 320px;
+}
+
+.button {
+    text-align: center;
+}

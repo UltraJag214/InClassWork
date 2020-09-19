@@ -1,0 +1,16 @@
+.header {
+  height: 80px;
+}
+
+.section1 {
+  background-color: gray;
+  height: 920px;
+  width: 100vw;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+}
+
+/*# sourceMappingURL=styles.css.map */
