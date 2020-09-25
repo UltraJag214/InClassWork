@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buisness Card</title>
+
+        <style>
+            #card {
+                border: 3px solid black;
+                border-radius: 5px;
+                width: 50%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="card">
+            <div id="name">Name: </div>
+            <div id="school">School: </div>
+            <div id="phone">Phone: </div>
+            <div id="email">Email: </div>
+
+        </div>
+        <script>
+            let myCard = {
+                fName: "Hayden",
+                lName: "Gibbons",
+                sName: "MTECH",
+                phone: "385-221-7078",
+                email: "hayden.c.gibbons@gmail.com",
+                printName: function () {
+                    return this.fName + " " + this.lName;
+                }
+            }
+            let nameTxt = document.getElementById("name").innerText
+            nameTxt += "\t" + myCard.printName()
+            document.getElementById("name").innerText = nameTxt
+            console.log(myCard.fName)
+        </script>
+    </body>
+</html>

@@ -26,7 +26,7 @@ let greetingElm = document.getElementById('greeting');
         monitorCount: 23,
         isClassInSession: true,
         roomId: 'N314',
-        students: [],
+        students: ['Caleb', 'Anders', 'Brandon', 'Nick', 'Sam', 'Tarren', 'Taylin', 'Hayden', 'Sam', 'MacKayla', 'Gideon', 'Brayden'],
         location: {
             buildingAddress: '314 Ashton Blvd',
             floor: 3,
