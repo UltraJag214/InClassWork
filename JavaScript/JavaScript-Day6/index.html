@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Shopping Cart</title>
+        <script>
+            var shoppingCart = (function () {
+                let cartItems = 0;
+                return {
+                    addItem: function() {
+                        return cartItems += 1;
+                    },
+                    removeItem: function() {
+                        return cartItems -= 1;
+                    },
+                    countItems: function() {
+                        return cartItems;
+                    },
+                    resetItems: function() {
+                        cartItems = 0;
+                    }
+                }
+            })();
+            function updateCart(){
+                document.getElementById('cartItems').innerText = "Cart Items: " + shoppingCart.countItems();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="cartItems">Cart Items: </div>
+        <button onclick="shoppingCart.addItem();updateCart()">Add Item</button>
+        <button onclick="shoppingCart.removeItem();updateCart();">Remove Item</button>
+        <button onclick="shoppingCart.resetItems();updateCart();">Empty Cart</button>
+        <button onclick="updateCart()">Update Cart</button>
+    </body>
+</html>
