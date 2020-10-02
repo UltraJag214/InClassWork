@@ -14,16 +14,18 @@ printChat();
 
 function printChat() {
     let chatHtml = '';
-    for (let i = 0; i < chat.length; i++) {
+    chat.forEach((message) => {
         chatHtml += `
-            <div>
-                <p>${chat[i].text}</p>
-                <p>${chat[i].username}</p>
+            <div class="message">
+                <p class="text">${chat[i].text}</p>
+                <p class="username">${chat[i].username}</p>
             </div>
             `;
-    }
+    });
     document.getElementById('chat-window').innerHTML = chatHtml;
 }
+
+
 
 
 
