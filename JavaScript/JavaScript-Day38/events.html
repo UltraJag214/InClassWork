@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <form>
+        <input class="target" type="text" value="Field 1">
+        <select class="target">
+            <option value="option1" selected="selected">Option 1</option>
+            <option value="option2">Option 2</option>
+        </select>
+    </form>
+    <div id="other">
+        Trigger the handler
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    $( ".target" ).change(function() {
+        alert( "Handler for .change() called." );
+    });
+</script>
+</html>

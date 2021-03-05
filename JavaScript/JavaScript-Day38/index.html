@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv">Put Something Here</div>
+    <div id="someid">Testing JQUERY</div>
+    <div id="myID">More Tests!</div>
+    <div id="myClass">Testing Classes!</div>
+    <input type="checkbox" class="myCheckbox">
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    $("#myDiv").html("My name is Hayden");
+    $("#someid").prepend("blah blah1 ");
+    $("#someid").append(" blah blah2");
+    $("#myID").remove();
+    $(".myCheckbox").attr("checked", true);
+    $("#myClass").addClass("test-class");
+    $(".test-class").append(" adding class");
+</script>
+</html>
