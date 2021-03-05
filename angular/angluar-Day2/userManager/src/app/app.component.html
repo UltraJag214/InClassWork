@@ -1,0 +1,34 @@
+<router-outlet></router-outlet>
+
+<h1>{{ title }}</h1>
+
+<label>First Name:</label>
+<input type="text" [(ngModel)]="user.firstName" />
+
+<br/>
+
+<label>Last Name:</label>
+<input type="text" [(ngModel)]="user.lastName" />
+
+<br/>
+
+<label>Email address:</label>
+<input type="text" [(ngModel)]="user.emailAddress" />
+
+<br/>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="onSave()"
+>
+  Save
+</button>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.firstName }}
+    <img [src]="user.avatar"/>
+  </li>
+
+</ul>
