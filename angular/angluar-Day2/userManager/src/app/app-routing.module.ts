@@ -4,7 +4,7 @@ import { TeztComponent } from './tezt/tezt.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: '**', redirectTo: 'test' },
+  // { path: '**', redirectTo: 'test' },
   { path: 'tezt', component: TeztComponent },
   { path: 'test', component: TestComponent }
 ];
