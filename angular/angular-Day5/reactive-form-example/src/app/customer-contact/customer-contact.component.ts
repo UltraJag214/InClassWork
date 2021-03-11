@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
+import { 
+  FormBuilder, 
+  FormControl, 
+  FormGroup, 
+  FormArray, 
+  Validators, 
+  ValidatorFn, 
+  AbstractControl,
+  ValidationErrors,
+  FormGroupDirective
+} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-customer-contact',
@@ -11,30 +22,31 @@ export class CustomerContactComponent implements OnInit {
   form: FormGroup
   constructor(public fb: FormBuilder) {
     this.form = fb.group({
-      firstName: [ 'John' ],
-      lastName: [ 'Doe' ],
-      // new FormArray object:
-      phoneNumbers: fb.array([fb.group({
-        alias: ['Home'],
-        number: ['555-555-5555']
-      })]),
-      // ^^^ new FormArray object ^^^
+      firstName: [ 'John', Validators.required ],
+      lastName: [ 'Doe', Validators.required ],
+      email: [ 'john.doe@example.com', Validators.compose([ Validators.required, Validators.email ]) ],
+      phoneNumbers: fb.array([ fb.group({
+        alias: [ 'Home' ],
+        number: [ '555-555-5555' ]
+      }) ]),
       address: fb.group({
-        street: ['123 Main St.'],
-        city: ['Salt Lake City'],
-        state: ['UT'],
-        zip: ['84001']
+        street: [ '123 Main St.' ],
+        city: [ 'Salt Lake City' ],
+        state: [ 'UT' ],
+        zip: [ '84001' ]
       })
-    });
+    }, { validator: this.forbiddenFullNameValidator }); // <-- cross field validator registered here);
   }
 
   ngOnInit(): void {
   }
 
+  customErrorStateMatcher: ErrorStateMatcher = new CustomErrorStateMatcher();
+
   onReset() {
     this.form.reset();
-    this.form.get('firstName').setValue('John');
-    this.form.get('lastName').setValue('Doe');
+    this.form.get('firstName').setValue('');
+    this.form.get('lastName').setValue('');
   }
 
   fillDefaultAddress() {
@@ -57,6 +69,22 @@ export class CustomerContactComponent implements OnInit {
       alias: [''],
       number: ['']
     }));
+  }
+
+  forbiddenFullNameValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+    const firstName = control.get('firstName').value;
+    const lastName = control.get('lastName').value;
+    const fullName = `${ firstName } ${ lastName }`;
+    const forbidden = new RegExp(/^[Mm]ickey [Mm]ouse$/).test(fullName);
+    return forbidden ? { 'forbiddenFullName': { value: fullName } } : null;
+  }
+
+}
+
+class CustomErrorStateMatcher implements ErrorStateMatcher {
+
+  isErrorState(control: FormControl, form: FormGroupDirective): boolean {
+    return form.getError('forbiddenFullName') || control.invalid;
   }
 
 }
